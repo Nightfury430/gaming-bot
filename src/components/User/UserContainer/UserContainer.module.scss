@@ -1,0 +1,113 @@
+@use '../../../stylesheets/mixins' as *;
+@use '../../../stylesheets/variables' as *;
+
+.userContainer {
+  @include position(relative);
+  @include size(90%, 40px);
+  @include indents(0 16px 0 32px, 0);
+  @include flex(row, flex-end, center);
+  font-family: 'Rubik', sans-serif;
+  font-size: 600;
+
+  @media screen and (max-width: 379px) {
+    height: 32px;
+  }
+
+  &__container {
+    @include size(90%, 48px);
+    @include flex(row, space-between, center, 16px);
+
+    @media screen and (min-height: 691px) {
+      @include size(100%, 56px);
+    }
+  }
+
+  &__avatarWrapper {
+    @include indents();
+    @include position(absolute, $top: -40%, $left: -10%);
+    @include size(64px, 64px);
+    @include flex(row, center, center);
+    z-index: 5;
+
+    @media screen and (max-width: 379px) {
+      @include size(52px, 52px);
+      top: -50%;
+    }
+  }
+
+  &__avatarBackground {
+    @include position(absolute, $top: 0, $left: 0);
+    @include size(100%, 100%);
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 2;
+  }
+
+  &__avatar {
+    @include size(100%, 100%);
+    @include position(absolute, $top: 0, $left: 0);
+    z-index: 1;
+    mask-composite: exclude;
+    mask-size: cover;
+  }
+
+  &__text {
+    @include indents();
+    @include ellipsis();
+    @include size(auto, unset);
+    text-align: center;
+    color: $main-color;
+    font-weight: 900;
+    font-size: 14px;
+    font-style: italic;
+
+    @media screen and (max-width: 379px) {
+      font-size: 10px;
+    }
+  }
+
+  &__textCoins {
+    @include indents();
+    @include ellipsis();
+    @include size(80px, 100%);
+    @include flex(row, flex-start, center, 4px);
+    text-align: left;
+    color: $main-color;
+    font-weight: 900;
+    font-size: 12px;
+    font-style: italic;
+
+
+    @media screen and (max-width: 379px) {
+      font-size: 10px;
+      width: 60px;
+    }
+  }
+
+  &__number {
+    @include indents();
+    color: $main-color;
+    font-weight: 700;
+    font-size: 18px;
+    font-style: italic;
+
+
+    @media screen and (max-width: 379px) {
+      font-size: 14px;
+    }
+  }
+
+  &__gainWrapper {
+    @include flex(row, flex-start, center, 16px);
+  }
+}
+
+.roundedBorders {
+  border-top-left-radius: $radius-12;
+  border-top-right-radius: $radius-12;
+}
+
+.lowRoundedBorders {
+  border-bottom-left-radius: $radius-12;
+  border-bottom-right-radius: $radius-12;
+}

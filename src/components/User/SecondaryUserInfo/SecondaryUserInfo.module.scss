@@ -1,0 +1,79 @@
+@use '../../../stylesheets/mixins' as *;
+@use '../../../stylesheets/variables' as *;
+
+.user {
+  @include indents();
+  @include size(100%, auto);
+  @include flex(row, flex-end, center, 10px);
+  font-family: 'Rubik', sans-serif;
+  z-index: 10;
+
+  &__avatarContainer {
+    @include indents();
+    @include position(absolute, $top: -20%, $left: -25%);
+    @include size(130px, 130px);
+
+    @media screen and (max-width: 379px) {
+      @include size(120px, 120px);
+    }
+  }
+
+  &__userInfo {
+    @include position(relative);
+    @include indents(16px 26px 16px 16px, 0);
+    @include size(70%, auto);
+    @include flex(column, center, flex-end);
+    background-color: $main-color;
+    border-radius: $radius-10;
+  }
+
+  &__textElements {
+    @include size(80%, auto);
+    @include flex(column, space-between, flex-end, 10px);
+  }
+
+  &__money {
+    @include size(100%, auto);
+    @include flex(row, flex-end, center, 10px);
+  }
+
+  &__name {
+    @include indents();
+    color: $black-color;
+    font-weight: 900;
+    font-size: 14px;
+    line-height: 1;
+
+    @media screen and (max-width: 379px) {
+      font-size: 12px;
+    }
+  }
+
+  &__text {
+    @include indents();
+    @include ellipsis();
+    color: $black-color;
+    font-weight: 900;
+    font-size: 12px;
+    line-height: 1;
+  }
+
+  &__balance {
+    @include button-style-reset();
+    @include size(85px, auto);
+    @include flex(row, space-evenly, center);
+    @include indents(8px, 0);
+    font-family: 'Rubik', sans-serif;
+    font-weight: 600;
+    border-radius: $radius-40;
+    background-color: $black-color;
+    text-align: center;
+    color: $main-color;
+    font-size: 10px;
+
+    @media screen and (max-width: 379px) {
+      @include size(68px, auto);
+      @include indents(6px, 0);
+    }
+  }
+}

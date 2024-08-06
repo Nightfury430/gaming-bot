@@ -1,0 +1,97 @@
+@use '../../stylesheets/mixins' as *;
+@use '../../stylesheets/variables' as *;
+
+.rooms {
+  @include indents(16px 16px, 0);
+  @include size(100%, 100%);
+  min-height: calc(100vh + 1px);
+  @include flex(column, flex-start, center);
+  z-index: 1;
+
+  &__heading {
+    @include size(50%, auto);
+    @include indents();
+    @include page-title();
+  }
+
+  &__buttons {
+    @include size(100%, auto);
+    @include flex(row, space-between, center, 16px);
+    border: none;
+    border-radius: $radius-40;
+  }
+
+  &__buttonWrapper {
+    @include size(100%, 42px);
+  }
+
+  &__createNew {
+    @include position(absolute, $bottom: 25%, $left: 50%);
+    @include size(100%, auto);
+    transform: translate(-50%, -50%);
+
+    // @media screen and (min-height: 660px) {
+    //   bottom: 25%;
+    // }
+  }
+
+  &__notify {
+    @include indents(0, 0 0 16px 0);
+    @include flex(row, center, center, 6px);
+    color: $main-color;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 200;
+    
+    @media screen and (max-width: 379px) {
+      font-size: 12px;
+    }
+  }
+
+  &__button {
+    @include button-style-reset();
+    @include size(100%, 40px);
+    @include indents(6px 12px, 0);
+    @include flex(column, space-between, center);
+    background-color: $black-color;
+    border-radius: $radius-40;
+    cursor: pointer;
+  }
+
+  &__game,
+  &__name {
+    @include indents();
+    font-size: 12px;
+    text-transform: lowercase;
+    font-weight: 700;
+  }
+
+  &__game {
+    color: $main-color;
+  }
+
+  &__name {
+    color: $mustard-color;
+  }
+
+  &__content {
+    @include size(100%, 20vh);
+    @include flex(column, flex-start, center, 20px);
+
+    @media screen and (max-height: 690px) {
+      @include size(100%, 25vh);
+    }
+  }
+
+  &__roomList {
+    @include position(relative);
+    @include size(100%, calc(68vh - 136px));
+    @include flex(column, flex-start, center, 8px);
+    overflow-y: scroll;
+    border-radius: $radius-10;
+
+    @media screen and (min-height: 691px) {
+      @include size(100%, 60vh);
+    }
+  }
+}

@@ -1,0 +1,67 @@
+@use '../../../stylesheets/mixins' as *;
+@use '../../../stylesheets/variables' as *;
+
+.room {
+  @include indents(8px, 0);
+  @include flex(row, space-between, center, 8px);
+  @include min-size(100%, 76px);
+  @include position(relative);
+  background-color: $tertiary-color;
+  border-radius: $radius-10;
+  cursor: pointer;
+
+  @media screen and (min-height: 690px) {
+    @include min-size(100%, 86px);
+  }
+
+  &__game {
+    @include size(100%, 100%);
+    @include max-size(116px, 100%);
+    @include flex(column, center, flex-start, 12px);
+
+    @media screen and (max-width: 381px) {
+      @include max-size(70px, 100%);
+    }
+  }
+
+  &__image {
+    @include size(48px, auto);
+  }
+
+  &__number {
+    @include indents();
+    @include min-size(15%, auto);
+    @include ellipsis();
+    @include flex(row, center, center, 2px);
+    color: $main-color;
+    text-align: center;
+    font-weight: 700;
+    font-size: 12px;
+  }
+
+  &__bet {
+    text-align: left;
+  }
+
+  &__gameName {
+    @include size(100%, auto);
+    @include indents();
+    @include ellipsis();
+    color: $main-color;
+    font-size: 10px;
+    text-align: left;
+    text-transform: uppercase;
+    font-weight: 700;
+    z-index: 3;
+  }
+
+  &__creator {
+    @include indents();
+    @include ellipsis();
+    @include size(100%, auto);
+    color: $main-color;
+    font-size: 12px;
+    text-align: center;
+    font-weight: 700;
+  }
+}

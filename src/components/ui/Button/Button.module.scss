@@ -1,0 +1,12 @@
+@use '../../../stylesheets/mixins' as *;
+@use '../../../stylesheets/variables' as *;
+
+.button {
+  @include size(100%, 100%);
+  @include button-style-reset();
+  border-radius: 40px;
+  font-size: 18px;
+  font-weight: 700;
+  color: $black-color;
+  font-family: 'Rubik', sans-serif;
+}

@@ -1,0 +1,213 @@
+@use '../../../stylesheets/mixins' as *;
+@use '../../../stylesheets/variables' as *;
+
+@mixin spin {
+  $steps: 70;
+
+  @for $i from 0 through $steps {
+    $percentage: $i * (100 / $steps);
+    $direction: if($i % 2==0, 1, -1);
+
+    #{$percentage}% {
+      transform: translateX($direction * 100%);
+      filter: blur(2px);
+    }
+  }
+}
+
+.wheel {
+  @include children-layout();
+  gap: 10px;
+  justify-content: flex-start;
+
+  &__title {
+    @include indents();
+    font-weight: 700;
+    color: $main-color;
+    font-size: 28px;
+    text-align: center;
+    font-style: italic;
+  }
+
+  &__blackContainer {
+    @include indents(16px 6px, 0);
+    @include size(100%, auto);
+    @include flex(column, center, center);
+    background-color: $black-color;
+
+    @media screen and (min-height: 691px) {
+      margin-top: 40px;
+    }
+  }
+
+  &__text {
+    @include size(100%, auto);
+    @include indents();
+    @include flex(row, center, center, 10px);
+    font-weight: 700;
+    font-size: 16px;
+    color: $main-color;
+    line-height: 1.2;
+
+    @media screen and (max-width: 379px) {
+      font-size: 14px;
+    }
+  }
+
+  &__background {
+    @include indents(24px 0 16px, 0);
+    @include position(absolute, $bottom: 16px, $left: -10%, $right: -10%);
+    @include flex(row, center, center, 10px);
+    @include size(auto, 32vh);
+    background-color: $black-color;
+    z-index: 5;
+
+    @media screen and (min-height: 744px) {
+      @include size(auto, 38vh);
+    }
+  }
+
+  &__item {
+    position: relative;
+    @include size(92px, 186px);
+    @include flex(column, center, center, 10px);
+    color: $black-color;
+    border-radius: $radius-15;
+
+    @media screen and (max-height: 678px) {
+      @include size(80px, 114px);
+    }
+
+    &:nth-child(odd) {
+      background-color: #FBD94E;
+    }
+
+    &:nth-child(even) {
+      background-color: #FFFFFF;
+    }
+  }
+
+  &__specialItem {
+    border: 8px #D61846 solid;
+  }
+
+  &__itemImg {
+    @include size(66px, 66px);
+  }
+
+  &__itemText {
+    @include indents();
+    @include position(absolute, $left: 50%, $bottom: 0);
+    @include size(100%, auto);
+    transform: translate(-50%, -50%);
+    font-size: 12px;
+    font-weight: 700;
+    text-wrap: wrap;
+    line-height: 1;
+
+    @media screen and (max-width: 379px) {
+      font-size: 10px;
+    }
+  }
+
+  &__buttonWrapper {
+    @include position(absolute, $bottom: 2%);
+    @include size(100%, 40px);
+    @include max-size(312px, auto);
+    z-index: 5;
+
+    @media screen and (max-height: 691px) {
+      @include size(100%, 36px);
+    }
+  }
+
+  &__spinner {
+    @include flex(row, center, center, 10px);
+    @include size(100%, auto);
+  }
+
+  &__spin {
+    animation: spin 5s infinite linear;
+  }
+
+  &__pointer {
+    @include size(72px, 94px);
+    @include position(absolute, $top: -18%, $left: 50%);
+    transform: translate(-50%);
+    z-index: 7;
+
+    @media screen and (max-width: 379px) {
+      @include size(52px, 68px);
+    }
+  }
+
+  &__lights {
+    @include position(absolute, $top: 0, $bottom: 0, $left: 0, $right: 0);
+    width: 100%;
+    z-index: 6;
+    overflow: hidden;
+  }
+
+  &__light {
+    @include size(20px, 20px);
+    position: absolute;
+    transform: translate(-50%);
+
+    &.light1 {
+      top: 8px;
+      left: 10%;
+    }
+
+    &.light2 {
+      top: -10px;
+      left: 30%;
+      width: 55px;
+      height: 55px;
+    }
+
+    &.light3 {
+      top: -10px;
+      left: 70%;
+      width: 55px;
+      height: 55px;
+    }
+
+    &.light4 {
+      top: 8px;
+      left: 90%;
+    }
+
+    &.light5 {
+      bottom: 8px;
+      left: 10%;
+    }
+
+    &.light6 {
+      bottom: -10px;
+      left: 30%;
+      width: 55px;
+      height: 55px;
+    }
+
+    &.light7 {
+      bottom: 8px;
+      left: 50%;
+    }
+
+    &.light8 {
+      bottom: -10px;
+      left: 70%;
+      width: 55px;
+      height: 55px;
+    }
+
+    &.light9 {
+      bottom: 8px;
+      left: 90%;
+    }
+  }
+}
+
+@keyframes spin {
+  @include spin();
+}

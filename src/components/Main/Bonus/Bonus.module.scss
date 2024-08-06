@@ -1,0 +1,45 @@
+@use '../../../stylesheets/mixins' as *;
+@use '../../../stylesheets/variables' as *;
+
+.bonus {
+  @include children-layout();
+  background-color: $main-color;
+  justify-content: flex-start;
+
+  &__button {
+    @include size(100%, 40px);
+  }
+
+  &__layout {
+    @include size(100%, calc(100% - 60px));
+    @include indents();
+  }
+
+  &__content {
+    @include indents(0 16px, 0);
+    @include size(100%, 100%);
+    @include flex(column, center, center, 16px);
+  }
+
+  &__titleContainer {
+    @include size(100%, auto);
+    @include flex(column, center, center, 8px);
+  }
+
+  &__title {
+    @include indents(16px 16px 0, 0);
+    text-transform: uppercase;
+    font-weight: 700;
+    color: $secondary-color;
+  }
+
+  &__image {
+    @include size(130px, 130px);
+  }
+
+  &__text {
+    @include indents();
+    color: $black-color;
+    font-weight: 200;
+  }
+}

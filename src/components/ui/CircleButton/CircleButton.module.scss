@@ -1,0 +1,26 @@
+@use '../../../stylesheets/mixins' as *;
+@use '../../../stylesheets/variables' as *;
+
+.button {
+  @include size(44px, 44px);
+  @include flex(row, center, center);
+  background-color: $main-color;
+  border-radius: $radius-round;
+
+
+  @media screen and (max-width: 389px) {
+    @include size(36px, 36px);
+  }
+
+  &__tasks {
+    @include size(50%, 35%);
+  }
+}
+
+.whiteButton {
+  background-color: $main-color;
+}
+
+.pinkButton {
+  background-color: $secondary-color;
+}

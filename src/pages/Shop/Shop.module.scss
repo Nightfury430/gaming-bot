@@ -1,0 +1,96 @@
+@use '../../stylesheets/mixins' as *;
+@use '../../stylesheets/variables' as *;
+
+@mixin buttonStyle {
+  @include button-style-reset();
+  @include size(142px, 30px);
+  font-family: 'Rubik', sans-serif;
+  border-radius: $radius-10;
+  color: $main-color;
+  font-weight: 900;
+  font-size: 12px;
+  box-sizing: border-box;
+}
+
+.shop {
+  @include position(relative);
+  @include indents(0 16px 16px, 0);
+  @include size(100%, 100%);
+  min-height: calc(100vh + 1px);
+  @include flex(column, flex-start, center, 16px);
+
+  &__header {
+    @include size(100%, 30vh);
+    @include flex(column, space-evenly, center, 8px);
+
+    @media screen and (max-height: 690px) {
+      @include size(100%, 35vh);
+    }
+  }
+
+  &__content {
+    @include flex(column, center, center, 16px);
+    @include size(100%, 100%);
+  }
+
+  &__title {
+    @include indents();
+    @include page-title();
+  }
+
+  &__buttons {
+    @include size(100%, auto);
+    @include max-size(390px, 100%);
+    @include flex(row-reverse, space-between, center);
+
+    @media screen and (max-width: 379px) {
+      gap: 6px;
+    }
+  }
+
+  &__goods {
+    @include indents();
+    @include size(100%, 55vh);
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(3, 1fr);
+    align-content: start;
+    justify-items: center;
+    overflow-y: auto;
+
+    @media screen and (max-height: 691px) {
+      @include size(100%, 50vh);
+    }
+  }
+
+  &__leftButtonsContainer {
+    @include flex(column, center, flex-start, 4px);
+  }
+
+  &__button {
+    @include buttonStyle();
+    background-color: $black-color;
+
+    &.activeButton {
+      background-color: $mustard-color;
+      color: $black-color;
+    }
+  }
+
+  &__buttonWhite {
+    @include buttonStyle();
+    background-color: $main-color;
+    color: $black-color;
+  }
+
+  &__inventory {
+    @include size(156px, 60px);
+    border-radius: $radius-12;
+  }
+}
+
+.hidden {
+  height: 0;
+  overflow: hidden;
+  transition: height 1s ease;
+}

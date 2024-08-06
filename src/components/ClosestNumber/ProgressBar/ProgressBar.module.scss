@@ -1,0 +1,90 @@
+@use '../../../stylesheets/mixins' as *;
+@use '../../../stylesheets/variables' as *;
+
+// @mixin textScrollAnimation {
+//   $steps: 180;
+//   @for $i from 0 through $steps {
+//     $percentage: $i * (100 / $steps);
+//     $direction: if($i % 2 == 0, 1, -1);
+//     #{$percentage}% {
+//       transform: translateY($direction * 90%);
+//       // filter: blur(10px);
+//     }
+//   }
+// }
+
+.bar {
+  @include size(120px, 120px);
+  overflow: visible;
+
+  @media screen and (max-height: 691px) {
+    @include size(100px, 100px);
+  }
+  
+  &__innerCircle {
+    fill: $main-color;
+  }
+  
+  &__outerCircle {
+    fill: transparent;
+    stroke: $black-color;
+    stroke-width: 6px;
+  }
+  
+  &__progressPoint {
+    fill: $closest-secondary-color;
+    transition: transform 5s linear;
+    z-index: 666;
+    stroke: $black-color;
+    stroke-width: 5px;
+  }
+
+  &__animated {
+    animation: spin 4s linear forwards;
+  }
+
+  &__textContainer {
+    overflow: hidden;
+  }
+
+  &__text {
+    @include indents();
+    fill: $black-color;
+    font-size: 16px;
+    transition: transform 0s;
+    font-weight: 900;
+    font-size: 20px;
+    transform-origin: 50% 50%;
+    text-align: center; 
+    // filter: blur(0);
+    // transition: filter 0.5s ease-in-out;
+  }
+
+  // &__blurText {
+  //   filter: url('#blurFilter');
+  // }
+
+  // &__noBlur {
+  //   filter: none;
+  // }
+
+  &__textAnimated {
+    // animation: textScroll 4s linear;
+    animation: none;
+  }
+
+  @keyframes spin {
+    0% {
+      transform-origin: 50px 50px;
+      transform: rotate(0deg);
+    }
+    100% {
+      transform-origin: 50px 50px;
+      transform: rotate(3600deg);
+    }
+  }
+
+  // @keyframes textScroll {
+  //   @include textScrollAnimation;
+  // }
+}

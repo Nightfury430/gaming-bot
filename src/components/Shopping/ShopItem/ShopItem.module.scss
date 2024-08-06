@@ -1,0 +1,43 @@
+@use '../../../stylesheets/mixins' as *;
+@use '../../../stylesheets/variables' as *;
+
+.item {
+  @include max-size(116px, 116px);
+  @include size(100%, 100%);
+  @include position(relative);
+  @include flex(column, center, center);
+  font-family: 'Rubik', sans-serif;
+  background: $tertiary-color;
+  border-radius: $radius-10;
+  aspect-ratio: 1;
+  cursor: pointer;
+
+  &__avatarContainer {
+    @include indents();
+    @include position(relative);
+    @include size(90px, 90px);
+
+    @media screen and (max-width: 379px) {
+      @include size(76px, 76px);
+    }
+  }
+
+  &__price {
+    @include indents();
+    @include position(absolute, $left: 50%, $bottom: 0);
+    transform: translate(-50%);
+    color: $main-color;
+    font-weight: 700;
+    font-size: 10px;
+    z-index: 3;
+  }
+
+  &__count {
+    @include indents();
+    @include position(absolute, $right: 4px, $top: 4px);
+    color: $main-color;
+    font-weight: 700;
+    font-size: 8px;
+    z-index: 3;
+  }
+}

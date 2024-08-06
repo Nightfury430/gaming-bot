@@ -1,0 +1,71 @@
+@use '../../../stylesheets/mixins' as *;
+@use '../../../stylesheets/variables' as *;
+
+.task {
+  @include indents(8px 12px, 0);
+  @include size(100%, 48px);
+  @include flex(row, space-between, center);
+  background-color: $main-color;
+  border-radius: $radius-12;
+  text-decoration: none;
+
+  &__name {
+    @include indents();
+    @include ellipsis();
+    color: $secondary-color;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1;
+
+    @media screen and (max-width: 379px) {
+      @include size(100%, auto);
+    }
+  }
+
+  &__container {
+    @include flex(row, flex-start, center, 6px);
+
+    @media screen and (max-width: 379px) {
+      @include max-size(80%, auto);
+    }
+  }
+
+  &__textWrapper {
+    @include size(100%, 100%);
+    @include flex(column, space-between, flex-start);
+  }
+
+  &__text {
+    @include indents();
+    color: $black-color;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1.2;
+    text-align: left;
+  }
+
+  &__button {
+    @include button-style-reset();
+    @include min-size(44px, 30px);
+    border-radius: 21px;
+    background-color: $mustard-color;
+    justify-self: flex-end;
+  }
+
+  &__completedButton {
+    @include button-style-reset();
+    @include min-size(44px, 30px);
+    @include flex(row, center, center);
+    border-radius: 21px;
+    background-color: #2DAB38;
+    justify-self: flex-end;
+  }
+
+  &__image {
+    @include size(30px, 30px);
+  }
+
+  &__check {
+    @include size(18px, 14px);
+  }
+}

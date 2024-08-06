@@ -1,0 +1,14 @@
+@use '../../stylesheets/mixins' as *;
+@use '../../stylesheets/variables' as *;
+
+* {
+  box-sizing: border-box;
+}
+
+.app {
+  @include indents();
+  @include size(100%, 100%);
+  overflow-y: auto;
+  text-align: center;
+  background-color: $secondary-color;
+}

@@ -1,0 +1,167 @@
+@use '../../../stylesheets/mixins' as *;
+@use '../../../stylesheets/variables' as *;
+
+.userInfo {
+  @include position(relative);
+  @include indents();
+  @include size(100%, auto);
+  @include flex(row, space-between, center);
+
+  &__content {
+    @include size(90%, auto);
+    @include flex(row, flex-start, center, 6px);
+
+    @media screen and (max-width: 391px) {
+      gap: 0;
+    }
+  }
+
+  &__textElements {
+    @include size(100%, 80px);
+    @include flex(column, flex-end, flex-start, 8px);
+  }
+
+  &__textWrapper {
+    @include flex(row, center, center, 8px);
+  }
+
+  &__avatarContainer {
+    @include size(148px, 148px);
+
+    @media screen and (min-width: 380px) and (max-width: 411px) {
+      @include size(130px, 130px);
+    }
+
+    @media screen and (max-width: 379px) {
+      @include size(108px, 108px);
+    }
+  }
+
+  &__info {
+    @include size(auto, 136px);
+    @include flex(column, center, flex-start, 12px);
+    flex-grow: 1;
+
+    @media screen  and (max-width: 411px) {
+      @include max-size(55%, 136px);
+    }
+  }
+
+  &__money {
+    @include flex(column, space-between, flex-start, 8px);
+  }
+
+  &__name {
+    @include indents();
+    @include ellipsis();
+    @include size(100%, auto);
+    @include flex(row, flex-start, center, 6px);
+    color: $main-color;
+    font-weight: 900;
+    line-height: 1;
+  }
+
+  &__userName {
+    @include indents();
+    @include ellipsis();
+    @include size(100%, auto);
+    text-align: left;
+    font-size: 16px;
+  
+    @media screen and (max-width: 379px) {
+      font-size: 14px;
+    }
+  }
+
+  &__text {
+    @include indents();
+    @include flex(row, flex-start, center, 8px);
+    color: $main-color;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1;
+
+    @media screen and (max-width: 379px) {
+      font-size: 14px;
+    }
+  }
+
+  &__communityText {
+    @include indents();
+    color: $black-color;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1;
+  }
+
+  &__balance {
+    @include button-style-reset();
+    @include size(85px, auto);
+    @include flex(row, space-evenly, center);
+    @include indents(8px, 0);
+    font-family: 'Rubik', sans-serif;
+    font-weight: 700;
+    border-radius: $radius-40;
+    background-color: $black-color;
+    text-align: center;
+    color: $main-color;
+    font-size: 10px;
+
+    @media screen and (max-width: 379px) {
+      @include size(68px, auto);
+      @include indents(6px, 0);
+    }
+  }
+
+  &__linkContainer {
+    @include size(unset, 100px);
+    @include flex(column, center, center, 10px);
+  }
+
+  &__links {
+    @include indents(6px 10px, 0);
+    @include min-size(120px, 56px);
+    @include flex(column, center, center);
+  }
+
+  &__tgLink {
+    @include flex(column, center, center, 4px);
+    text-decoration: none;
+    color: $black-color;
+    font-size: 14px;
+  }
+
+  &__button {
+    @include button-style-reset();
+  }
+
+  &__buttons {
+    @include flex(row, center, center, 4px);
+  }
+
+  &__tasksButton {
+    @include button-style-reset();
+    @include flex(row, center, center, 8px);
+    @include size(28px, 28px);
+    background-color: $black-color;
+    border-radius: $radius-round;
+
+    @media screen and (max-width: 379px) {
+      @include size(24px, 24px);
+    }
+  }
+
+  &__tasksImg {
+    @include size(12px, 9px);
+  }
+}
+
+@keyframes scrollText {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-30%);
+  }
+}

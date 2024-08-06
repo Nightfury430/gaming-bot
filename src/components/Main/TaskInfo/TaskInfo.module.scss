@@ -1,0 +1,121 @@
+@use '../../../stylesheets/mixins' as *;
+@use '../../../stylesheets/variables' as *;
+
+.info {
+  @include children-layout();
+  background-color: $main-color;
+  gap: 10px;
+  justify-content: flex-start;
+  position: relative;
+
+  &__button {
+    @include button-style-reset();
+    @include min-size(44px, 30px);
+    border-radius: 21px;
+    background-color: $mustard-color;
+    justify-self: flex-end;
+  }
+
+  &__titleWrapper {
+    @include flex(column, flex-start, center, 12px);
+    @include size(100%, auto);
+  }
+
+  &__instruction {
+    @include flex(column, flex-start, center, 12px);
+    @include size(100%, auto);
+  }
+
+  &__title {
+    @include indents();
+    @include size(90%, auto);
+    font-family: Rubik;
+    font-size: 28px;
+    font-style: italic;
+    font-weight: 900;
+    line-height: 28px;
+    text-align: center;
+    color: $secondary-color;
+  }
+
+  &__reward {
+    @include indents();
+    @include size(100%, auto);
+    color: $black-color;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1.3;
+  }
+
+  &__steps {
+    @include indents(6px 16px 0, 0);
+    @include flex(column, flex-start, center, 10px);
+    @include size(100%, 40vh);
+    overflow: scroll;
+    z-index: 3;
+  }
+
+  &__step {
+    @include indents(8px 12px, 0);
+    @include size(100%, 48px);
+    @include flex(row, space-between, center);
+    background-color: #e7e7e7;
+    border-radius: $radius-12;
+    text-decoration: none;
+  }
+
+  &__text {
+    @include ellipsis();
+    @include indents();
+    @include size(auto, 100%);
+    color: $black-color;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1.3;
+    text-align: left;
+    text-wrap: wrap;
+  }
+
+  &__textInstr {
+    @include indents(10% 0 0, 0);
+    @include size(90%, auto);
+    color: $black-color;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+    text-wrap: wrap;
+    text-align: center;
+  }
+
+  &__icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  &__buttonWrapper {
+    @include indents(0 16px, 0 0 20px 0);
+    @include size(100%, 40px);
+  }
+
+  &__closeBtn {
+    @include button-style-reset();
+    @include position(absolute, $right: -8px, $top: 4px);
+    transform: translate(-50%);
+    @include flex(row, center, center);
+    @include size(25px, 25px);
+    border-radius: 40px;
+    background-color: $black-color;
+    z-index: 4;
+  }
+}
+
+.reward {
+  @include size(100%, 100%);
+  @include flex(column, flex-start, center);
+
+  &__img {
+    @include position(absolute, $left: 50%, $top: 50%);
+    transform: translate(-50%, -50%);
+    @include size(210px, 210px);
+  }
+}

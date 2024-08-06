@@ -1,0 +1,77 @@
+@use '../../stylesheets/mixins' as *;
+@use '../../stylesheets/variables' as *;
+
+.main {
+  @include indents(0 16px, 0);
+  @include flex(column, flex-start, center);
+  @include size(100%, 100%);
+  min-height: calc(100vh + 1px);
+  font-family: 'Rubik', sans-serif;
+
+  &__header {
+    @include size(100%, 30vh);
+    @include flex(column, center, center);
+    z-index: 2;
+
+    @media screen and (max-height: 690px) {
+      @include size(100%, 35vh);
+    }
+  }
+
+  &__logo {
+    @include size(133px, 38px);
+  }
+
+  &__content {
+    @include flex(column, flex-start, unset, 24px);
+    @include size(100%, 75vh);
+    overflow-y: visible;
+    z-index: 3;
+
+    @media screen and (max-height: 690px) {
+      @include size(100%, calc(65vh - 16px));
+      @include flex(column, flex-start, unset, 12px);
+    }
+  }
+
+  &__banner {
+    @include max-size(100%, 90px);
+  }
+
+  &__centralButtonsContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    gap: 12px;
+    @include size(100%, auto);
+
+
+    @media screen and (max-width: 379px) {
+      grid-template-columns: 2fr 1fr;
+    }
+  }
+
+  &__smallButtonsContainer {
+    @include size(100%, auto);
+    @include flex(column, space-between, space-between, 12px);
+
+
+    @media screen and (max-width: 379px) {
+     gap: 8px; 
+    }
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &__addDiv {
+    @include size(100%, auto);
+  }
+}
+
+.hidden {
+  height: 0;
+  overflow: hidden;
+  transition: height .5s ease;
+}

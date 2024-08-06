@@ -1,0 +1,65 @@
+@use '../../../stylesheets/mixins' as *;
+@use '../../../stylesheets/variables' as *;
+
+.product {
+  @include children-layout();
+  @include position(relative);
+  font-family: 'Rubik', sans-serif;
+
+  @media screen and (min-height: 690px) {
+    justify-content: center;
+  }
+
+  &__avatarContainer {
+    @include indents();
+    @include position(relative);
+    @include min-size(100px, 100px);
+    @include size(auto, auto);
+    @include max-size(180px, 180px);
+    aspect-ratio: 1;
+    z-index: 5;
+
+    @media screen and (min-height: 690px) {
+      @include max-size(240px, 240px);
+    }
+  }
+
+  &__info {
+    @include size(100%, auto);
+    @include flex(column, center, center, 16px);
+    z-index: 1;
+
+    @media screen and (max-width: 379px) {
+      width: calc(100% - 32px);
+    }
+  }
+
+  &__textElements {
+    @include flex(column, center, center, 8px);
+  }
+
+  &__type {
+    @include indents();
+    color: $main-color;
+    font-weight: 200;
+    font-size: 16px;
+  }
+
+  &__buttonWrapper {
+    @include size(100%, 42px);
+    @include max-size(312px, auto);
+  }
+
+  &__buttons {
+    @include size(100%, auto);
+    @include flex(column, center, center, 8px);
+  }
+
+  &__notification {
+    @include indents();
+    @include size(100%, 100%);
+    @include flex(column, center, center);
+    color: $main-color;
+    font-weight: 900;
+  }
+}

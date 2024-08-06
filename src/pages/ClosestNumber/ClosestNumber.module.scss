@@ -1,0 +1,391 @@
+@use '../../stylesheets/mixins' as *;
+@use '../../stylesheets/variables' as *;
+
+.game {
+  @include indents(16px, 0);
+  @include size(100%, 100vh);
+  @include flex(column, flex-start, center);
+  @include position(relative);
+  background-image: url('../../images/closest-number/layer.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: $closest-color;
+  font-family: 'Rubik', sans-serif;
+
+  &__text {
+    @include indents();
+    color: $main-color;
+    font-size: 16px;
+    font-weight: 700;
+
+    @media screen and (min-height: 691px) {
+      font-weight: 900;
+      color: $main-color;
+      font-size: 19px;
+    }
+  }
+
+  &__betContainer {
+    @include size(auto, 28px);
+    @include flex(column, center, center);
+  }
+
+  &__bet {
+    @include min-size(124px, 28px);
+    @include indents(4px 16px, 0);
+    @include flex(row, center, center, 4px);
+    background-color: $closest-secondary-color;
+    color: $main-color;
+    border-radius: $radius-40;
+    font-weight: 700;
+
+    @media screen and (min-height: 691px) {
+      @include size(100px, 48px);
+    }
+  }
+
+  &__centralContainer {
+    @include size(100%, auto);
+    @include position(absolute, $left: 50%, $top: 45%);
+    transform: translate(-50%, -50%);
+    @include flex(row, center, center, 10px);
+    overflow: visible;
+
+    @media screen and (max-height: 691px) {
+      @include position(absolute, $left: 50%, $top: 38%);
+    }
+  }
+
+  &__round {
+    @include size(120px, 120px);
+    @include position(absolute, $left: 50%, $top: 50%);
+    transform: translate(-50%, -50%);
+    @include flex(row, center, center);
+    background-color: $main-color;
+    border-radius: $radius-round;
+    border: 2px black solid;
+
+    @media screen and (max-height: 691px) {
+      @include size(96px, 96px);
+    }
+  }
+
+  &__centralText,
+  &__centralTimer {
+    @include indents();
+    @include position(absolute, $top: 50%);
+    transform: translate(-50%, -50%);
+    font-weight: 900;
+    font-size: 20px;
+
+    @media screen and (min-height: 691px) {
+      font-size: 24px;
+    }
+  }
+
+  &__centralText {
+    left: 15%;
+
+    @media screen and (max-height: 691px) {
+      left: 15%;
+    }
+  }
+
+  &__centralTimer {
+    left: 85%;
+  }
+}
+
+.overlay {
+  @include indents(16px, 0);
+  @include size(100%, unset);
+  @include min-size(100%, 146px);
+  @include position(absolute, $bottom: 0, $left: 50%);
+  @include flex(column, flex-start, center, 16px);
+  transform: translate(-50%);
+  background-color: $closest-secondary-color;
+  border-top-left-radius: 32px;
+  border-top-right-radius: 32px;
+  height: 20vh;
+  transition: height 1s ease-in-out;
+  box-sizing: border-box;
+  box-shadow: inset 0 5px 0 0 rgba(0, 0, 0, 0.2);
+
+  @media screen and (max-height: 600px) {
+    gap: 6px;
+    justify-content: center;
+  }
+
+  &__inputWrapper {
+    @include size(100%, auto);
+    @include flex(row, space-between, flex-start, 4px);
+  }
+
+  &__avatarWrapper {
+    @include position(relative);
+    @include size(103px, 103px);
+    aspect-ratio: 1;
+
+    @media screen and (max-width: 379px) {
+      @include size(92px, 92px);
+    }
+  }
+
+  &__name {
+    @include ellipsis();
+    @include indents(2px 8px, 0);
+    @include size(100%, auto);
+    @include position(absolute, $bottom: 0, $left: 50%);
+    transform: translate(-50%);
+    color: $black-color;
+    background-color: $main-color;
+    border-radius: $radius-10;
+    z-index: 5;
+    font-weight: 900;
+    font-size: 14px;
+  }
+
+  &__inputContainer {
+    @include size(auto, auto);
+    @include position(relative);
+    @include flex(column, center, center, 6px);
+  }
+
+  &__input {
+    @include size(95%, 38px);
+    @include indents(10px, 0);
+    font-family: "Rubik", sans-serif;
+    border: none;
+    border-radius: $radius-40;
+    flex-grow: 1;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 20px;
+    line-height: 30px;
+    border: 1.5px solid black;
+    box-shadow: inset 0 -3px 0 0 rgba(0, 0, 0, 0.2);
+    text-align: center;
+
+    @media screen and (max-width: 379px) {
+      @include indents(6px, 0);
+      height: 32px;
+      font-size: 14px;
+    }
+  }
+
+  &__inputText {
+    @include indents();
+    @include size(100%, auto);
+    font-size: 14px;
+    color: $main-color;
+    font-weight: 900;
+    line-height: 1;
+
+    @media screen and (max-width: 379px) {
+      font-size: 10px;
+    }
+  }
+
+  &__userMoney {
+    @include flex(row, center, center);
+    background-color: rgba(0, 0, 0, 0.2);
+    @include size(95%, 38px);
+    @include indents(10px, 0);
+    text-align: center;
+    border-radius: $radius-40;
+
+    @media screen and (max-width: 379px) {
+      @include indents(6px, 0);
+      height: 32px;
+    }
+  }
+
+  &__text {
+    @include indents();
+    color: $main-color;
+    font-weight: 900;
+    opacity: 1;
+  }
+
+  .expanded &__input {
+    box-shadow: none;
+  }
+
+  &.expanded {
+    @include size(100%, calc(100% - 45vh));
+    transition: height .5s ease-in-out;
+    z-index: 666;
+    overflow: visible;
+
+    @media screen and (min-height: 691px) {
+      @include size(100%, calc(100% - 55vh));
+    }
+  }
+
+  &__keyboard {
+    @include position(relative);
+    @include size(100%, auto);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    align-content: center;
+    flex-grow: 1;
+  }
+
+
+  &__invalidInput {
+    background-color: #FF5C4F;
+  }
+
+  &__key {
+    @include size(100%, auto);
+    @include min-size(100%, 34px);
+    background-color: #FFE591;
+    color: $black-color;
+    border: none;
+    border-radius: 8px;
+    font-weight: 900;
+    font-size: 26px;
+    cursor: pointer;
+    box-shadow: inset 0 -3px 0 0 rgba(255, 195, 0, 0.8);
+
+    @media screen and (min-height: 691px) {
+      @include min-size(100%, 36px);
+    }
+  }
+
+  &__bottomLeftButton,
+  &__bottomRightButton {
+    @include flex(row, center, center, 8px);
+  }
+
+  &__bottomLeftButton {
+    @extend .overlay__key;
+    background: #FF9188;
+    font-size: 1em;
+    border: .5px black solid;
+    box-shadow: inset 0 -3px 0 0 rgba(255, 92, 79, 1);
+  }
+
+  &__bottomRightButton {
+    @extend .overlay__key;
+    background: #66FF6C;
+    border: .5px black solid;
+    font-size: 1em;
+    box-shadow: inset 0 -3px 0 0 rgba(40, 221, 47, 1);
+  }
+
+  &__emojiButton {
+    @include size(56px, 38px);
+    @include button-style-reset();
+    @include flex(row, center, center);
+    background-color: $main-color;
+    border-radius: 19px;
+
+  @media screen and (max-width: 379px) {
+    @include size(50px, 30px);
+  }
+  }
+
+  &__smile {
+    @include size(28px, 28px);
+
+    @media screen and (max-width: 379px) {
+      @include size(22px, 22px);
+    }
+  }
+
+  &__emojis {
+    @include indents(4px 10px, 0);
+    @include size(100%, 100%);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-content: space-between;
+    justify-items: center;
+    overflow-y: auto;
+    background-color: $closest-color;
+    border-radius: $radius-15;
+  }
+
+  &__emoji {
+    @include size(48px, 48px);
+    aspect-ratio: 1;
+    cursor: pointer;
+  }
+
+  &__playerEmoji {
+    @include indents();
+    @include size(60px, 40px);
+    @include flex(row, center, center);
+    @include position(absolute, $top: -20%, $left: 100%);
+    transform: translate(-50%, -50%);
+    background-color: $main-color;
+    border-radius: $radius-10;
+    z-index: 5;
+
+    @media screen and (max-height: 700px) {
+      @include size(42px, 28px);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      transform: translateX(-50%);
+      border-width: 12px 6px 0;
+      border-style: solid;
+      border-color: $main-color transparent;
+      display: block;
+      transform: rotate(30deg);
+      width: 0;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: $radius-10;
+      pointer-events: none;
+    }
+  }
+
+  &__emojiImage {
+    @include size(40px, 40px);
+
+    @media screen and (max-height: 700px) {
+      @include size(20px, 20px);
+    }
+  }
+
+  &__icon {
+    @include size(28px, 28px);
+  }
+}
+
+
+.background {
+  @include size(100%, 100%);
+  background-color: $closest-secondary-color;
+}
+
+.rules {
+  @include size(100vw, 100vh);
+  @include flex(row, center, center);
+
+  &__image {
+    @include size(100vw, object-fit);
+    position: relative;
+  }
+
+  &__button {
+    @include size(100%, 42px);
+    @include max-size(312px, auto);
+    @include position(absolute, $bottom: 16px, $left: 50%);
+    transform: translateX(-50%);
+  }
+}

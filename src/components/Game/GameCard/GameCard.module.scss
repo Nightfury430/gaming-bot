@@ -1,0 +1,58 @@
+@use '../../../stylesheets/mixins' as *;
+@use '../../../stylesheets/variables' as *;
+
+.game {
+  @include position(relative);
+  @include indents(16px, 0);
+  @include size(100%, 100%);
+  @include max-size(182px, 182px);
+  aspect-ratio: 1;
+  border-radius: $radius-10;
+  background-color: $tertiary-color;
+  text-decoration: none;
+  color: $main-color;
+  cursor: pointer;
+
+  @media screen and (max-width: 379px) {
+    @include max-size(160px, 160px);
+  }
+
+  &__info {
+    @include position(absolute, $left: 16px, $bottom: 16px, $right: 16px);
+    @include flex(row, space-between, flex-end);
+  }
+
+  &__name {
+    @include indents();
+    color: $main-color;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+
+  &__players {
+    @include indents();
+    @include flex(row, center, center, 4px);
+    color: $main-color;
+    font-weight: 900;
+  }
+
+  &__image,
+  &__imageRight {
+    @include indents();
+    @include max-size(136px, auto);
+
+    @media screen and (max-width: 379px) {
+      @include max-size(106px, auto)
+    }
+  }
+
+  &__image {
+    @include position(absolute, $top: 40%, $left: 0);
+    transform: translate(-50%, -50%);
+  }
+
+  &__imageRight {
+    @include position(absolute, $top: 40%, $left: 90%);
+    transform: translate(-50%, -50%);
+  }
+}

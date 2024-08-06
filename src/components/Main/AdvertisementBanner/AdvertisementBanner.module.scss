@@ -1,0 +1,155 @@
+@use '../../../stylesheets/mixins' as *;
+@use '../../../stylesheets/variables' as *;
+
+.banner {
+  @include position(relative);
+  @include size(100%, 106px);
+  @include flex(row, space-between, center);
+  border-radius: $radius-15;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  box-sizing: border-box;
+  transition: background-image .7s ease-in-out;
+
+  @media screen and (min-height: 691px) {
+    height: 124px;
+  }
+
+  @media screen and (max-width: 430px) {
+    background-size: contain;
+  }
+
+  @media screen and (min-width: 381px) and (max-width: 430px) {
+    background-size: 100% auto;
+  }
+
+  @media screen and (max-width: 379px) {
+    height: 96px;
+    background-size: 100%;
+  }
+
+  &__link {
+    @include size(100%, 100%);
+    @include position(absolute, $top: 0, $left: 0);
+    cursor: pointer;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  &__sliderButton {
+    @include size(48px, 100%);
+    @include button-style-reset();
+    align-self: flex-end;
+    cursor: pointer;
+    z-index: 3;
+  }
+
+  &__leftButton {
+    @include size(20px, 20px);
+    @include position(absolute, $left: 8px, $top: 55%);
+    @include flex(row, center, center);
+    @include indents(8px, 0);
+    transform: translateY(-50%);
+    background-color: $black-color;
+    border-radius: $radius-round;
+    z-index: 2;
+
+    @media screen and (max-width: 379px) {
+      left: 4px;
+    }  
+  }
+
+  &__rightButton {
+    @include size(20px, 20px);
+    @include position(absolute, $right: 8px, $top: 55%);
+    @include flex(row, center, center);
+    @include indents(8px, 0);
+    transform: translateY(-50%);
+    background-color: $black-color;
+    border-radius: $radius-round;
+    z-index: 2;
+
+    @media screen and (max-width: 379px) {
+      right: 4px;
+    }  
+  }
+
+  &__indicators {
+    @include indents(4px 6px, 0);
+    @include flex(row, $gap: 2px);
+    @include position(absolute, $bottom: 8px, $left: 50%);
+    transform: translate(-50%);
+    background-color: $black-color;
+    border-radius: 40px;
+    z-index: 2;
+
+    @media screen and (max-width: 379px) {
+      bottom: 12px;
+    }
+  }
+
+  &__indicator {
+    @include indents();
+    @include size(6px, 6px);
+    border: none;
+    border-radius: 100%;
+    background-color: $main-color;
+    cursor: pointer;
+    z-index: 2;
+
+    @media screen and (max-width: 379px) {
+      @include size(5px, 5px);
+    }
+  }
+
+  &__info {
+    @include size(100%, 100%);
+    @include flex(column, space-between, flex-start, 40px);
+    @include ellipsis();
+  }
+
+  &__picHeader {
+    @include indents();
+    @include size(60%, auto);
+    @include min-size(60%, 28px);
+    @include position(absolute, $left: 8%, $top: 20%);
+    font-family: 'Rubik', sans-serif;
+    font-weight: 900;
+    text-align: left;
+    text-wrap: wrap;
+    font-size: 13px;
+    line-height: 1;
+
+    @media screen and (min-width: 420px) {
+      @include position(absolute, $left: 8%, $top: 20%);
+    }
+
+    @media screen and (max-width: 379px) {
+      font-size: 11px;
+      top: 24px;
+    }
+  }
+
+  &__text {
+    @include indents();
+    @include position(absolute, $left: 8%, $bottom: 10%);
+    font-family: 'Rubik', sans-serif;
+    font-weight: 400;
+    text-align: left;
+    text-wrap: nowrap;
+    font-size: 12px;
+
+    @media screen and (min-width: 420px) {
+      @include position(absolute, $left: 8%, $bottom: 8%);
+    }
+    
+    @media screen and (max-width: 379px) {
+      font-size: 10px;
+    }
+  }
+}
+
+.activeIndicator {
+  background-color: $secondary-color;
+}
