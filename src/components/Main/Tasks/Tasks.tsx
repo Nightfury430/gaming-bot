@@ -16,7 +16,8 @@ const Tasks: FC = () => {
   const dispatch = useAppDispatch();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { user } = useTelegram();
-  const userId = user?.id;
+  // const userId = user?.id;
+  const userId = 7129314691;
   const currentTasks = useAppSelector(store => store.app.tasks);
   const translation = useAppSelector(store => store.app.languageSettings);
   const [selectedTask, setSelectedTask] = useState<ITask | null>(null);

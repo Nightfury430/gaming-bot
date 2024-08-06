@@ -26,7 +26,8 @@ const UserContainer: FC<IProps> = ({
   leaderBoardType
 }) => {
   const { user } = useTelegram();
-  const userId = user?.id;
+  // const userId = user?.id;
+  const userId = 7129314691;
   const isUser = Number(userId) === member?.user_id;
 
   return (

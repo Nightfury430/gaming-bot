@@ -37,7 +37,8 @@ import styles from './Main.module.scss';
 export const Main: FC = () => {
   const navigate = useNavigate();
   const { user } = useTelegram();
-  const userId = user?.id;
+  // const userId = user?.id;
+  const userId = 7129314691;
   const dailyBonusData = useAppSelector(store => store.app.bonus);
   const dispatch = useAppDispatch();
   const translation = useAppSelector(store => store.app.languageSettings);
@@ -52,24 +53,24 @@ export const Main: FC = () => {
   const [luckData, setLuckData] = useState<IFortuneData | null>(null);
   const isPortrait = useOrientation();
 
-  useEffect(() => {
-    const fetchUserData = () => {
-      getAppData(userId)
-        .then((res) => {
-          dispatch(setUserData(res.user_info));
-          dispatch(setBannerData(res.ad_info));
-          dispatch(setShopImage(res.shop_image_url));
-          dispatch(setUserPhoto(res.avatar));
-          dispatch(setProductsArchive(res.collectibles_data));
-        })
-        .catch((error) => {
-          console.error('Get user data error:', error);
-        })
-    };
+  // useEffect(() => {
+  //   const fetchUserData = () => {
+  //     getAppData(userId)
+  //       .then((res) => {
+  //         dispatch(setUserData(res.user_info));
+  //         dispatch(setBannerData(res.ad_info));
+  //         dispatch(setShopImage(res.shop_image_url));
+  //         dispatch(setUserPhoto(res.avatar));
+  //         dispatch(setProductsArchive(res.collectibles_data));
+  //       })
+  //       .catch((error) => {
+  //         console.error('Get user data error:', error);
+  //       })
+  //   };
 
-    fetchUserData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch, userId]);
+  //   fetchUserData();
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [dispatch, userId]);
 
   const handleBannerClick = (bannerData: IBannerData) => {
     setCurrentBanner(bannerData);

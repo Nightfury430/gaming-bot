@@ -23,7 +23,8 @@ interface IProps {
 
 const WheelOfLuck: FC<IProps> = ({ data, closeOverlay }) => {
   const { user } = useTelegram();
-  const userId = user?.id;
+  // const userId = user?.id;
+  const userId = 7129314691;
   const dispatch = useAppDispatch();
   const translation = useAppSelector(store => store.app.languageSettings);
   const [messageShown, setMessageShown] = useState<boolean>(false);
