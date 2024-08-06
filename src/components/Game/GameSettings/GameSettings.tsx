@@ -26,7 +26,7 @@ const GameSettings: FC<IProps> = ({ data, closeOverlay }) => {
   const navigate = useNavigate();
   const { user } = useTelegram();
   // const userId = user?.id;
-  const userId = 7129314691;
+  const userId = 172359056;
   const [bet, setBet] = useState(0.1);
   const [currency, setCurrency] = useState(1);
   const [message, setMessage] = useState('');

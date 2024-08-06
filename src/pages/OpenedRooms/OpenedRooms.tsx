@@ -29,7 +29,7 @@ import styles from './OpenedRooms.module.scss';
 export const OpenedRooms: FC = () => {
   const { user } = useTelegram();
   // const userId = user?.id;
-  const userId = 7129314691;
+  const userId = 172359056;
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const translation = useAppSelector(store => store.app.languageSettings);

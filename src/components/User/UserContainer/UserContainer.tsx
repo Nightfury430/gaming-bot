@@ -27,7 +27,7 @@ const UserContainer: FC<IProps> = ({
 }) => {
   const { user } = useTelegram();
   // const userId = user?.id;
-  const userId = 7129314691;
+  const userId = 172359056;
   const isUser = Number(userId) === member?.user_id;
 
   return (

@@ -41,7 +41,7 @@ export const RockPaperScissors: FC = () => {
   const navigate = useNavigate();
   const { tg, user } = useTelegram();
   // const userId = user?.id;
-  const userId = 7129314691;
+  const userId = 172359056;
   const { roomId } = useParams<{ roomId: string }>();
   const dispatch = useAppDispatch();
   const [data, setData] = useState<any>(null);

@@ -47,7 +47,7 @@ import styles from './App.module.scss';
 export const App: FC = () => {
   const { tg, user } = useTelegram();
   // const userId = user?.id;
-  const userId = 7129314691;
+  const userId = 172359056;
   const dispatch = useAppDispatch();
   const [loading, setLoading] = useState(false);
 

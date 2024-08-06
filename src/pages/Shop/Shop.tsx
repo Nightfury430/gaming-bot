@@ -25,7 +25,7 @@ export const Shop: FC = () => {
   const dispatch = useAppDispatch();
   const { user } = useTelegram();
   // const userId = user?.id;
-  const userId = 7129314691;
+  const userId = 172359056;
   const shopData = useAppSelector(store => store.app.products);
   const collectibles = useAppSelector(store => store.app.info?.collectibles);
   const lavkaShop = useAppSelector(store => store.app.lavka);

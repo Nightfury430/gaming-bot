@@ -23,7 +23,7 @@ const DailyBonus: FC<IProps> = ({ bonus, closeOverlay }) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { user } = useTelegram();
   // const userId = user?.id;
-  const userId = 7129314691;
+  const userId = 172359056;
   const translation = useAppSelector(store => store.app.languageSettings);
   // обработчик действия по кнопке "забрать"
   const handleGetBonus = async (item: IBonus) => {

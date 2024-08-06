@@ -32,7 +32,7 @@ const JoinRoomPopup: FC<IProps> = ({
 }) => {
   const { user } = useTelegram();
   // const userId = user?.id;
-  const userId = 7129314691;
+  const userId = 172359056;
   const [messageShown, setMessageShown] = useState(false);
   const navigate = useNavigate();
   const userInfo = useAppSelector(store => store.app.info);

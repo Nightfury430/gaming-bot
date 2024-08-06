@@ -38,7 +38,7 @@ export const Main: FC = () => {
   const navigate = useNavigate();
   const { user } = useTelegram();
   // const userId = user?.id;
-  const userId = 7129314691;
+  const userId = 172359056;
   const dailyBonusData = useAppSelector(store => store.app.bonus);
   const dispatch = useAppDispatch();
   const translation = useAppSelector(store => store.app.languageSettings);

@@ -19,7 +19,7 @@ const Referral: FC = () => {
   const { user, tg } = useTelegram();
   const dispatch = useAppDispatch();
   // const userId = user?.id;
-  const userId = 7129314691;
+  const userId = 172359056;
   const translation = useAppSelector(store => store.app.languageSettings);
   const [totalBalance, setTotalBalance] = useState<number | null>(null);
   const [refsBoard, setRefsBoard] = useState<IMember[] | null>(null);
