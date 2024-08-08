@@ -313,7 +313,7 @@ export const RockPaperScissors: FC = () => {
   useEffect(() => {
     if (data?.players_count === "2" && data?.players?.some((player: IRPSPlayer) => player.choice === 'none')) {
       setTimerStarted(true);
-      setTimer(15);
+      // setTimer(15);
     } else if (data?.players?.every((player: IRPSPlayer) => player.choice !== 'none')) {
       setTimerStarted(false);
       if (timerRef.current) {
