@@ -187,9 +187,7 @@ export const RockPaperScissors: FC = () => {
                     setTimeout(() => {
                       setMessageVisible(false);
                       setAnimation(null);
-                      setShowTimer(true);
                       setAnyPlayerReady(true);
-                      setTimerStarted(true);
                       setTimer(15);
                       setPlayersAnim({
                         firstAnim: null,
@@ -311,8 +309,9 @@ export const RockPaperScissors: FC = () => {
   };
   // Таймер
   useEffect(() => {
-    if (data?.players_count === "2" && data?.players?.some((player: IRPSPlayer) => player.choice === 'none')) {
+    if (data?.players_count === "2" && data?.players?.some((player: IRPSPlayer) => player.choice === 'none') && data?.players?.some((player: IRPSPlayer) => player.choice === 'ready') ) {
       setTimerStarted(true);
+      setShowTimer(true);
       // setTimer(15);
     } else if (data?.players?.every((player: IRPSPlayer) => player.choice !== 'none')) {
       setTimerStarted(false);
