@@ -235,6 +235,8 @@ export const ClosestNumber: FC = () => {
                   }
                   setInputValue('');
                   setModalOpen(true);
+                  setTimerStarted(true);
+                  setTimer(30);
                 }, 5000)
               }
 
@@ -422,7 +424,7 @@ export const ClosestNumber: FC = () => {
     if (data?.players_count !== "1" && data?.players?.every((player: IRPSPlayer) => player.choice === 'none')) {
       setTimerStarted(true);
       setTimer(30);
-    } else if (data?.players?.every((player: IRPSPlayer) => player.choice !== 'none')) {
+    } else if (data?.players_count !== "1" && data?.players?.every((player: IRPSPlayer) => player.choice !== 'none')) {
       setTimerStarted(false);
       if (timerRef.current) {
         clearInterval(timerRef.current);
@@ -440,7 +442,7 @@ export const ClosestNumber: FC = () => {
       }, 1000);
     } else if (timer === 0) {
       const currentPlayer = data?.players.find((player: IRPSPlayer) => Number(player.userid) === Number(userId));
-      if (currentPlayer?.choice === 'none' && data?.win?.winner_id === "none") {
+      if (currentPlayer?.choice === 'none') {
         leaveRoomRequest(userId)
           .then((res: any) => {
             if (res?.message === 'success') {
